@@ -19,12 +19,8 @@ class ProductDetail : Fragment() {
         var name = arguments?.getString("name")
         var image = arguments?.getString("image")
         var description = arguments?.getString("description")
-        nameView = view.findViewById(R.id.name2)
-        imageView = view.findViewById(R.id.image2)
-        descriptionView = view.findViewById(R.id.description2)
-        nameView.text = "Name : $name"
-        descriptionView.text = "Description : $description"
-        Glide.with(view.context).load(image).into(imageView)
+        if(name!=null&&image!=null&&description!=null)
+        showData(view,name,description,image)
     }
 
     override fun onCreateView(
@@ -34,5 +30,12 @@ class ProductDetail : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.product_detail, container, false)
     }
-
+ fun showData(view: View,name:String,description:String,image:String){
+     nameView = view.findViewById(R.id.name2)
+     imageView = view.findViewById(R.id.image2)
+     descriptionView = view.findViewById(R.id.description2)
+     nameView.text = "Name : $name"
+     descriptionView.text = "Description : $description"
+     Glide.with(view.context).load(image).into(imageView)
+ }
 }
