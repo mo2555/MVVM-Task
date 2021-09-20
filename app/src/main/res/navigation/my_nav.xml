@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/productsFragment">
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.mvvmtask.UI.ProductsFragment"
+        android:label="fragment_"
+        tools:layout="@layout/fragment_" >
+        <action
+            android:id="@+id/proToDetail"
+            app:destination="@id/blankFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.example.mvvmtask.UI.ProductDetail"
+        android:label="product_detail"
+        tools:layout="@layout/product_detail" >
+        <action
+            android:id="@+id/detailToPro"
+            app:destination="@id/productsFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="name" />
+        <argument
+            android:name="image"
+            app:argType="string"
+            android:defaultValue="src" />
+        <argument
+            android:name="description"
+            app:argType="string"
+            android:defaultValue="description" />
+    </fragment>
+</navigation>
