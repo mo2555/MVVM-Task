@@ -31,7 +31,7 @@ class CustomAdapter(var data:ArrayList<ProductsData>, var productsFragment: View
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var list = data[position]
         holder.name.text = "  Name : ${list.name}"
-        holder.description.text = "description : ${list.description}"
+        holder.description.text = "Description : ${list.description}"
         Glide.with(productsFragment).load(list.image_url).into(holder.image)
         holder.button.setOnClickListener {
             var action = ProductsFragmentDirections.proToDetail(list.name,list.image_url,list.description)
