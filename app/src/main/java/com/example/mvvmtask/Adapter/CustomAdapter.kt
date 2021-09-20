@@ -37,6 +37,10 @@ class CustomAdapter(var data:ArrayList<ProductsData>, var productsFragment: View
             var action = ProductsFragmentDirections.proToDetail(list.name,list.image_url,list.description)
             Navigation.findNavController(productsFragment).navigate(action)
         }
+        holder.itemView.setOnClickListener {
+            var action = ProductsFragmentDirections.proToDetail(list.name,list.image_url,list.description)
+            Navigation.findNavController(productsFragment).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

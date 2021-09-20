@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.mvvmtask.R
 import com.example.mvvmtask.R.*
 import com.example.mvvmtask.ViewModel.MyViewModel
@@ -23,6 +24,7 @@ class ProductsFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: CustomAdapter
     lateinit var myViewModel : MyViewModel
+    lateinit var swipe:SwipeRefreshLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -33,6 +35,11 @@ class ProductsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         makeView(view)
+        swipe = view.findViewById(R.id.swipe)
+        swipe.setOnRefreshListener {
+            makeView(view)
+            swipe.isRefreshing = false
+        }
 
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
