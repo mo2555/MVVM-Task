@@ -1,4 +1,5 @@
 package com.example.mvvmtask.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,10 +26,15 @@ class MyViewModel : ViewModel(){
                     response: Response<ArrayList<ProductsData>>
                 ) {
                     when (response.code()) {
-                        200 -> {
+                        in 200..300 -> {
                             var data: ArrayList<ProductsData> = response.body()!!
                             productDataList.postValue(data)
                         }
+
+                        400->{
+                            error_message.postValue("Please refresh")
+                        }
+
 
                         else -> {
                             val errorJsonString = response?.errorBody()?.string()

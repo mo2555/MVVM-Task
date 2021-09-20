@@ -38,6 +38,7 @@ class ProductsFragment : Fragment() {
         swipe = view.findViewById(R.id.swipe)
         swipe.setOnRefreshListener {
             makeView(view)
+            Toast.makeText(view.context,"Refresh done",Toast.LENGTH_SHORT).show()
             swipe.isRefreshing = false
         }
 
