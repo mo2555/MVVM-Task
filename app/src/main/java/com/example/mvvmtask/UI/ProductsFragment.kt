@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +22,7 @@ import com.example.retrfoit.CustomAdapter
 class ProductsFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: CustomAdapter
-    var myViewModel : MyViewModel = MyViewModel()
-    lateinit var layout:Layout
-
+    lateinit var myViewModel : MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -42,7 +41,7 @@ class ProductsFragment : Fragment() {
     }
 
    fun makeView(view: View) {
-
+       myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
        myViewModel.getProducts()
        myViewModel.getProduct().observe(viewLifecycleOwner, Observer {
            recyclerView = view.findViewById(R.id.recyclerView)
