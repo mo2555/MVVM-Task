@@ -31,11 +31,6 @@ class MyViewModel : ViewModel(){
                             productDataList.postValue(data)
                         }
 
-                        400->{
-                            error_message.postValue("Please refresh")
-                        }
-
-
                         else -> {
                             val errorJsonString = response?.errorBody()?.string()
                             val json: JSONObject = JSONObject(errorJsonString)
